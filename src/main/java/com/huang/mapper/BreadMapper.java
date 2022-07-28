@@ -2,6 +2,7 @@ package com.huang.mapper;
 
 import com.huang.pojo.Bread;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.Assert;
 
 import java.util.Calendar;
 import java.util.LinkedList;
@@ -16,7 +17,7 @@ import java.util.List;
  */
 @Repository
 public class BreadMapper {
-    //伪装查询所有面包
+    //伪造查询所有面包
     public List<Bread> getAllBreads(){
         Calendar calendar = Calendar.getInstance();
         LinkedList<Bread> breads = new LinkedList<>();
@@ -34,7 +35,7 @@ public class BreadMapper {
         breads.add(new Bread(6,"金枪鱼三明治",12,5,1,1,calendar.getTime()));
         return breads;
     }
-    //伪装查询没过期面包
+    //伪造查询没过期面包
     public List<Bread> getBreads(){
         Calendar calendar = Calendar.getInstance();
         LinkedList<Bread> breads = new LinkedList<>();
@@ -45,7 +46,7 @@ public class BreadMapper {
         breads.add(new Bread(3,"金枪鱼三明治",12,10,1,1,calendar.getTime()));
         return breads;
     }
-    //伪装查询过期面包
+    //伪造查询过期面包
     public List<Bread> getOverBreads(){
         Calendar calendar = Calendar.getInstance();
         LinkedList<Bread> breads = new LinkedList<>();

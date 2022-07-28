@@ -2,9 +2,11 @@ package com.huang.service;
 
 import com.huang.pojo.Bread;
 import com.huang.pojo.ShoppingBread;
+import net.bytebuddy.implementation.bind.annotation.RuntimeType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.util.Assert;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -17,6 +19,7 @@ import java.util.List;
  * @version: 1.0
  */
 @SpringBootTest
+
 public class ShoppingServiceTest {
     @Autowired
     ShoppingService shoppingService;
@@ -88,4 +91,5 @@ public class ShoppingServiceTest {
         shoppingBreads.add(bread3);
         System.out.println(shoppingService.shoppingBraed(shoppingBreads));
     }
+
 }
