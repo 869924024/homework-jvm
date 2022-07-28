@@ -32,38 +32,28 @@ public class ShoppingServiceTest {
 
     @Test
     public void isTrueBread(){ //判断传入参数是否满足购买条件(id是否相同、数量是否足够)
-        //正常的（id-数量正确的）
-//        LinkedList<ShoppingBread> shoppingBreads = new LinkedList<>();
-//        ShoppingBread bread1=new ShoppingBread();
-//        bread1.setId(1);
-//        bread1.setShoppingNumber(10);
-//        shoppingBreads.add(bread1);
-//        ShoppingBread bread2=new ShoppingBread();
-//        bread2.setId(2);
-//        bread2.setShoppingNumber(10);
-//        shoppingBreads.add(bread2);
-//        ShoppingBread bread3=new ShoppingBread();
-//        bread3.setId(3);
-//        bread3.setShoppingNumber(10);
-//        ShoppingBread bread4=new ShoppingBread();
-//        bread4.setId(4);
-//        bread4.setShoppingNumber(5);
-//        shoppingBreads.add(bread4);
-//        ShoppingBread bread5=new ShoppingBread();
-//        bread5.setId(5);
-//        bread5.setShoppingNumber(5);
-//        shoppingBreads.add(bread5);
-//        System.out.println(shoppingService.isTrueBread(shoppingBreads));
-
-        //id不存在的
-//        LinkedList<ShoppingBread> shoppingBreads = new LinkedList<>();
-//        ShoppingBread bread1=new ShoppingBread();
-//        bread1.setId(10);
-//        bread1.setShoppingNumber(10);
-//        shoppingBreads.add(bread1);
-//        System.out.println(shoppingService.isTrueBread(shoppingBreads));
-
-        //数量不足的
+        LinkedList<ShoppingBread> shoppingBreads = new LinkedList<>();
+        ShoppingBread bread1=new ShoppingBread();
+        bread1.setId(1);
+        bread1.setShoppingNumber(10);
+        shoppingBreads.add(bread1);
+        ShoppingBread bread5=new ShoppingBread();
+        bread5.setId(5);
+        bread5.setShoppingNumber(5);
+        shoppingBreads.add(bread5);
+        System.out.println(shoppingService.isTrueBread(shoppingBreads));
+    }
+    @Test
+    public void isTrueBreakNotId() {//Id不存在
+        LinkedList<ShoppingBread> shoppingBreads = new LinkedList<>();
+        ShoppingBread bread1 = new ShoppingBread();
+        bread1.setId(10);
+        bread1.setShoppingNumber(10);
+        shoppingBreads.add(bread1);
+        System.out.println(shoppingService.isTrueBread(shoppingBreads));
+    }
+    @Test
+    public void isTrueBreakNotNum() {//数量不足的
         LinkedList<ShoppingBread> shoppingBreads = new LinkedList<>();
         ShoppingBread bread1=new ShoppingBread();
         bread1.setId(1);
@@ -72,17 +62,27 @@ public class ShoppingServiceTest {
         System.out.println(shoppingService.isTrueBread(shoppingBreads));
     }
     @Test
-    public void shoppingBraedTest(){
+    public void shoppingBraed(){
         LinkedList<ShoppingBread> shoppingBreads = new LinkedList<>();
-        ShoppingBread bread1=new ShoppingBread(); //(1*12=12)
+        ShoppingBread bread1=new ShoppingBread();
         bread1.setId(1);
-        bread1.setShoppingNumber(1);
+        bread1.setShoppingNumber(10);
         shoppingBreads.add(bread1);
-        ShoppingBread bread2=new ShoppingBread();  //过期当天应该半价(3*6=18)
+        System.out.println(shoppingService.shoppingBraed(shoppingBreads));
+    }
+    @Test
+    public void shoppingOverBread(){
+        LinkedList<ShoppingBread> shoppingBreads = new LinkedList<>();
+        ShoppingBread bread2=new ShoppingBread();
         bread2.setId(4);
         bread2.setShoppingNumber(3);
         shoppingBreads.add(bread2);
-        ShoppingBread bread3=new ShoppingBread(); //过期当天7-9点应该0元免费(0*5=0)
+        System.out.println(shoppingService.shoppingBraed(shoppingBreads));
+    }
+    @Test
+    public void shoppingFreeBread(){
+        LinkedList<ShoppingBread> shoppingBreads = new LinkedList<>();
+        ShoppingBread bread3=new ShoppingBread();
         bread3.setId(5);
         bread3.setShoppingNumber(5);
         shoppingBreads.add(bread3);

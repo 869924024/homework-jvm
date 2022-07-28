@@ -22,16 +22,22 @@ public class BreadMapperTest {
 
     @Test
     public void getBread(){
-        System.out.println("AllBread：");
-        List<Bread> allBreads = mapper.getAllBreads();
-        for (Bread bread:allBreads) {
-            System.out.println(bread);
-        }
         System.out.println("notOverBread：");
         List<Bread> breads = mapper.getBreads();
         for (Bread bread:breads) {
             System.out.println(bread);
         }
+    }
+    @Test
+    public void getAllBread(){
+        System.out.println("AllBread：");
+        List<Bread> allBreads = mapper.getAllBreads();
+        for (Bread bread:allBreads) {
+            System.out.println(bread);
+        }
+    }
+    @Test
+    public void overBread(){
         System.out.println("overBread过期面包：");
         List<Bread> overBreads = mapper.getOverBreads();
         for (Bread bread:overBreads) {

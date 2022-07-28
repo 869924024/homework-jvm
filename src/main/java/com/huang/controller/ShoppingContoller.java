@@ -5,6 +5,7 @@ import com.huang.service.ShoppingService;
 import com.huang.service.vo.ResponseVo;
 import com.huang.service.vo.ShoppingVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
  * @datetime 2022年 07月 28日 14:45
  * @version: 1.0
  */
+@Controller
 public class ShoppingContoller {
     @Autowired
     ShoppingService shoppingService;
