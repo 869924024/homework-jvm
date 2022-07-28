@@ -1,4 +1,4 @@
-package com.huang.service;
+package com.huang.mapper;
 
 import com.huang.pojo.Bread;
 import org.junit.jupiter.api.Test;
@@ -9,30 +9,31 @@ import java.util.List;
 
 /**
  * @author hjj
- * @ClassName getBreadTest
+ * @ClassName getBreadMapper
  * @description: TODO
- * @datetime 2022年 07月 28日 11:42
+ * @datetime 2022年 07月 28日 12:42
  * @version: 1.0
  */
 @SpringBootTest
-public class getBreadTest {
+public class BreadMapperTest {
+
     @Autowired
-    ShoppingService shoppingService;
+    BreadMapper mapper;
 
     @Test
     public void getBread(){
         System.out.println("AllBread：");
-        List<Bread> allBread = shoppingService.getAllBread();
-        for (Bread bread:allBread) {
+        List<Bread> allBreads = mapper.getAllBreads();
+        for (Bread bread:allBreads) {
             System.out.println(bread);
         }
         System.out.println("notOverBread：");
-        List<Bread> breads = shoppingService.getBread();
+        List<Bread> breads = mapper.getBreads();
         for (Bread bread:breads) {
             System.out.println(bread);
         }
         System.out.println("overBread过期面包：");
-        List<Bread> overBreads = shoppingService.getOverBread();
+        List<Bread> overBreads = mapper.getOverBreads();
         for (Bread bread:overBreads) {
             System.out.println(bread);
         }

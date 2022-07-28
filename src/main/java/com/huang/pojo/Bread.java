@@ -24,5 +24,5 @@ public class Bread {
     private long number;
     private int type; //1-有肉 2-全面 3-杂粮
     private long qualityDay;
-    private Date manufacture;
+    private Date manufactureTime;
 }
