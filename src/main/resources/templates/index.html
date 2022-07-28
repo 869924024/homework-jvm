@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>测试面包推送</title>
+  <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+  <script src="/js/socket.io.js"></script>
+</head>
+<body>
+<p id="msg"></p>
+<button id="onBind">发送消息</button>
+</body>
+<script type="text/javascript">
+  <!-- 实时从指定查看是否有消息 -->
+  var socket = io.connect('localhost:1528');
+  socket.on('connect_msg', function(data) {
+    for (let i = 0; i < data.length; i++) {
+      $("#msg").append('<p>  Id:'+data[i].id +' 面包名:'+data[i].name+' 价格: '+data[i].price+'</>');
+    }
+  });
+
+  $("#onBind").click(function() {
+    $.ajax({
+      url: 'http://localhost:8080/pushMessage',
+      type: 'GET',
+      success: function(data) {
+        alert("消息发送成功");
+      }
+    })
+  })
+</script>
+</html>

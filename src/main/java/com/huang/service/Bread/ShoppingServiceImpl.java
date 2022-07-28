@@ -1,9 +1,9 @@
-package com.huang.service;
+package com.huang.service.Bread;
 
 import com.huang.mapper.BreadMapper;
 import com.huang.pojo.Bread;
 import com.huang.pojo.ShoppingBread;
-import com.huang.service.vo.ShoppingVo;
+import com.huang.service.Bread.vo.ShoppingVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,6 +60,43 @@ public class ShoppingServiceImpl implements ShoppingService{
             }
         }
         return allBreads;
+    }
+
+    @Override
+    public List<Bread> getOverBread() {
+        Calendar calendar = Calendar.getInstance(); //伪造用户当前时间，真是业务使用系统时间判断
+        calendar.set(2022,6,28,8,0,0);
+        Date currentTime = calendar.getTime();
+        List<Bread> overBreads = breadMapper.getOverBreads();
+        for (Bread bread:overBreads) {
+            int dif = Math.abs((int) ((currentTime.getTime() - bread.getManufactureTime().getTime()) / (1000 * 3600 * 24)));
+            if (dif>=bread.getQualityDay()) {  //判断过期
+                // System.out.println("过期"+(dif-bread.getQualityDay())+"天的商品当前的状态:"+bread); //0为当天
+                switch (bread.getType()) {
+                    case 1: {//有肉面包过期，销毁
+                        overBreads.remove(bread);
+                        break;
+                    }
+                    case 2:{ //全面面包过期当天可以半价出售
+                        if (dif-bread.getQualityDay()>=1){
+                            overBreads.remove(bread);
+                        }else{
+                            bread.setPrice(bread.getPrice()/2);
+                        }
+                        break;
+                    }
+                    case 3:{ //杂粮面包,过期当天的早上7:00-9:00免费领取
+                        if (dif-bread.getQualityDay()==0&&currentTime.getHours()>=7&&currentTime.getHours()<9){
+                            bread.setPrice(0);
+                        }else{
+                            overBreads.remove(bread);
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        return overBreads;
     }
 
     @Override

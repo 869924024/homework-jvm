@@ -1,12 +1,11 @@
-package com.huang.service;
+package com.huang.service.Bread;
 
 import com.huang.pojo.Bread;
 import com.huang.pojo.ShoppingBread;
-import net.bytebuddy.implementation.bind.annotation.RuntimeType;
+import com.huang.service.Bread.ShoppingService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.util.Assert;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -28,6 +27,15 @@ public class ShoppingServiceTest {
     public void getAllBreadTest(){  //查询所有可购面包
         List<Bread> allBread = shoppingService.getAllBread();
         System.out.println("Bread on sale:");
+        for (Bread bread:allBread) {
+            System.out.println(bread);
+        }
+    }
+
+    @Test
+    public void getOverBread(){
+        List<Bread> allBread = shoppingService.getOverBread();
+        System.out.println("OverBread on sale:");
         for (Bread bread:allBread) {
             System.out.println(bread);
         }
@@ -64,6 +72,7 @@ public class ShoppingServiceTest {
         shoppingBreads.add(bread1);
         System.out.println(shoppingService.isTrueBread(shoppingBreads));
     }
+
     @Test
     public void shoppingBraed(){
         LinkedList<ShoppingBread> shoppingBreads = new LinkedList<>();

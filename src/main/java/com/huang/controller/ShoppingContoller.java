@@ -1,9 +1,9 @@
 package com.huang.controller;
 
 import com.huang.pojo.ShoppingBread;
-import com.huang.service.ShoppingService;
-import com.huang.service.vo.ResponseVo;
-import com.huang.service.vo.ShoppingVo;
+import com.huang.service.Bread.ShoppingService;
+import com.huang.service.Bread.vo.ResponseVo;
+import com.huang.service.Bread.vo.ShoppingVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 

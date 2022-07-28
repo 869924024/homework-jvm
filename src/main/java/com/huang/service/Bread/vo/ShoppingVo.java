@@ -1,4 +1,4 @@
-package com.huang.service.vo;
+package com.huang.service.Bread.vo;
 
 import lombok.Data;
 
